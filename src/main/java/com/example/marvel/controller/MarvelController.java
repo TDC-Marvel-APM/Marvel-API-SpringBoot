@@ -18,14 +18,14 @@ public class MarvelController {
     private MarvelRepo repo;
   
     @PostMapping("/add")
-    public String saveBook(@RequestBody Marvel marvel){
+    public String saveMoviesAndSeries(@RequestBody Marvel marvel){
         repo.save(marvel);
         
         return "Added Successfully";
     }
   
     @GetMapping("/findAll")
-    public List<Marvel> getBooks() {
+    public List<Marvel> getMoviesAndSeries() {
         
         return repo.findAll();
     }
@@ -36,7 +36,10 @@ public class MarvelController {
       if (tutorialData.isPresent()) {
     	Marvel _tutorial = tutorialData.get();
         _tutorial.setName(marvel.getName());
-        _tutorial.setAuthorName(marvel.getAuthorName());
+        _tutorial.setHero(marvel.getHero());
+        _tutorial.setYear(marvel.getYear());
+        _tutorial.setStar(marvel.getStar());
+        _tutorial.setImage(marvel.getImage());
         return new ResponseEntity<>(repo.save(_tutorial), HttpStatus.OK);
       } else {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -44,7 +47,7 @@ public class MarvelController {
     }
   
     @DeleteMapping("/delete/{id}")
-    public String deleteBook(@PathVariable String id){
+    public String deleteMoviesAndSeries(@PathVariable String id){
         repo.deleteById(id);
         
         return "Deleted Successfully";
