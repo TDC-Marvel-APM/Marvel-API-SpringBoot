@@ -23,6 +23,7 @@ public class Marvel {
     private int year;
     private String image;
     private int star;
+    private String description;
     private String type;
 
 	public String getName() {
@@ -67,4 +68,10 @@ public class Marvel {
 	public void setType(String type) {
 		this.type = type;
 	}
+    public String getDescription() {
+        return description;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

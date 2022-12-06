@@ -30,6 +30,7 @@ public class MarvelController {
         return repo.findAll();
     }
     
+    @CrossOrigin(origins = "http://localhost:3000")
     @PutMapping("/update/{id}")
     public ResponseEntity<Marvel> update(@PathVariable("id") String id, @RequestBody Marvel marvel) {
       Optional<Marvel> tutorialData = repo.findById(id);
@@ -46,6 +47,7 @@ public class MarvelController {
       }
     }
   
+    @CrossOrigin(origins = "http://localhost:3000")
     @DeleteMapping("/delete/{id}")
     public String deleteMoviesAndSeries(@PathVariable String id){
         repo.deleteById(id);
